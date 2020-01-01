@@ -1,0 +1,38 @@
+Sun Clock - X11 Version 1.0
+
+X11 version by John Mackin, <john@cs.su.oz.AU>, based on a Suntools program
+by John Walker, <kelvin@acad.uu.NET>.
+
+This program is a clock that shows which portion of the Earth's surface is
+illuminated by the Sun.  It is designed to be usually iconic, but can be
+opened for a larger display with the time updated every second and both the
+local timezone and UTC displayed.  The Suntools version had a menu that
+allowed you to speed up time, show different dates, etc., but I have
+never implemented any of that in the X version; there is some support
+for it in the code, however.
+
+The program should have been written using Xt rather than raw Xlib, and I
+tried that at first.  I couldn't get the icon window to work, though, so I
+abandoned that version.  Hence, the program does _not_ accept most Xt-style
+command line options; valid options are given in the manual page.
+
+The program has been tested on a number of different clients (MIPS, Sun,
+VAX) and servers (MIPS colour console, Sun MIT mono, NCD-16/19), under X11R3
+and R4.  If you find bugs, please report them to me, john@cs.su.oz.AU.
+
+To build the program, decide whether you want to use imake or not.  If you
+don't, link Makefile.dist to Makefile, and edit it, otherwise edit the
+Imakefile and use xmkmf.  The program uses two fonts, one for the icon
+display and one for the large window display.  The names of these fonts
+are compiled in.  The font names comes from -DBIGFONT and -DSMALLFONT
+in the Makefile.  If you are not using imake, you will need to supply
+a -DSYSV option if you are System V.  You should supply -DNEW_CTIME if
+you are using the table-driven ctime and a "struct tm" contains
+a tm_zone field.  If neither of the ways of getting the local timezone
+name works on your system, please let me know.
+
+The original Suntools program, in case you want it, was posted as Volume 1,
+Issue 79 of comp.sources.sun.
+
+This program is public domain and may be freely copied as long as the
+notices at the top of sunclock.c remain intact.
